@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="tillabPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>tilpersist.Norminv</class>
+    <class>tilpersist.Patients</class>
+    <class>tilpersist.Request</class>
+    <class>tilpersist.Ingress</class>
+    <properties>
+      <property name="hibernate.connection.provider_class" value="org.jasypt.hibernate4.connectionprovider.EncryptedPasswordC3P0ConnectionProvider"/>
+      <property name="hibernate.connection.encryptor_registered_name" value="hibernateEncryptor"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.c3p0.acquire_increment" value="2"/>
+      <property name="hibernate.c3p0.idle_test_period" value="300"/>
+      <property name="hibernate.c3p0.timeout" value="100"/>
+      <property name="hibernate.c3p0.max_size" value="10"/>
+      <property name="hibernate.c3p0.max_statements" value="50"/>
+      <property name="hibernate.c3p0.min_size" value="2"/>
+      <property name="hibernate.c3p0.acquireRetryAttempts" value="2"/>
+      <property name="hibernate.c3p0.acquireRetryDelay" value="300"/>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.default_batch_fetch_size" value="200"/>
+    </properties>
+  </persistence-unit>
+</persistence>
