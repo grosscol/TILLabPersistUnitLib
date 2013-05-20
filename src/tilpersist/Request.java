@@ -154,9 +154,9 @@ import javax.persistence.TemporalType;
         
         Request ret = new Request(this.reqIndex, this.fpni, this.cartnum);
         //Dates need to be cloned
-        ret.dateappr = (Date) this.dateappr.clone();
-        ret.datepull = (Date) this.datepull.clone();
-        ret.datesub = (Date) this.datesub.clone();
+        ret.dateappr = this.dateappr == null ? null : (Date) this.dateappr.clone();
+        ret.datepull = this.datepull == null ? null :(Date) this.datepull.clone();
+        ret.datesub = this.datesub == null ? null : (Date) this.datesub.clone();
         //For the inventory record, copy the reference only
         ret.invRecord = this.invRecord;
         //Strings are immuteable and safe to simply copy by assignment.
