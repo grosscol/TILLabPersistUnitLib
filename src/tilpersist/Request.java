@@ -90,7 +90,7 @@ import javax.persistence.TemporalType;
       
     })
 
-    public class Request implements Serializable {
+    public class Request implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -148,6 +148,28 @@ import javax.persistence.TemporalType;
         this.cartnum = cartnum;
     }
 
+    @Override
+    public Object clone(){
+        //Make a new request object & copy all the field values.
+        
+        Request ret = new Request(this.reqIndex, this.fpni, this.cartnum);
+        //Dates need to be cloned
+        ret.dateappr = (Date) this.dateappr.clone();
+        ret.datepull = (Date) this.datepull.clone();
+        ret.datesub = (Date) this.datesub.clone();
+        //For the inventory record, copy the reference only
+        ret.invRecord = this.invRecord;
+        //Strings are immuteable and safe to simply copy by assignment.
+        ret.email = this.email;
+        ret.numrequested = this.numrequested; 
+        ret.rmdest = this.rmdest;
+        ret.rname = this.rname;
+        ret.rnote = this.rnote;
+        ret.sbuser = this.sbuser;
+                
+        return ret;
+    }
+    
     public Long getReqIndex() {
         return reqIndex;
     }
