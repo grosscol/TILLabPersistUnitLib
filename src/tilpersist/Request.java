@@ -275,27 +275,29 @@ import javax.persistence.TemporalType;
 
     @Override
     public boolean equals(Object object) {
-        // Warning - this method won't work in the case the id fields are not set
+       // Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Request)) {
             return false;
         }
         Request other = (Request) object;
         
-        /* //Original implementation is simple reqIndex check
-        if ((this.reqIndex == null && other.reqIndex != null) || 
-                (this.reqIndex != null && !this.reqIndex.equals(other.reqIndex))) {
+        //Check dates for asymetric nulls then compare, if not null
+        if( (this.dateappr == null ? other.dateappr == null : this.dateappr.compareTo(other.dateappr) == 0) &&
+            (this.datepull == null ? other.datepull == null : this.datepull.compareTo(other.datepull) == 0) &&
+            (this.datesub == null ? other.datesub == null : this.datesub.compareTo(other.datesub) == 0)
+          ){
+            //dates are fine.  Either both are null or dates are equal.
+            //Carry on.
+        }else{
+            //One date is null and the other is not, or dates are not equal.
             return false;
         }
-        */
         
         //Check non-string fields. These might be null, but shouldn't hurt
         // the comparison.  If any don't match, Requests are not equal
-        if( this.reqIndex == other.reqIndex &&
-            this.cartnum == other.cartnum &&
-            this.dateappr == other.dateappr &&
-            this.datepull == other.datepull &&
-            this.datesub == other.datesub &&
-            this.fpni == other.fpni &&
+        if( this.reqIndex.compareTo(other.reqIndex) == 0 &&
+            this.cartnum.compareTo(other.cartnum) == 0 &&
+            this.fpni.compareTo(other.fpni) == 0 &&
             this.invRecord == other.invRecord &&
             this.numrequested == other.numrequested &&
             this.reqIndex == other.reqIndex
