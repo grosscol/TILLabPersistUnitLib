@@ -298,7 +298,6 @@ import javax.persistence.TemporalType;
         if( this.reqIndex.compareTo(other.reqIndex) == 0 &&
             this.cartnum.compareTo(other.cartnum) == 0 &&
             this.fpni.compareTo(other.fpni) == 0 &&
-            this.invRecord == other.invRecord &&
             this.numrequested == other.numrequested &&
             this.reqIndex == other.reqIndex
                  ){
@@ -307,6 +306,9 @@ import javax.persistence.TemporalType;
             //A field is not equal.  Whole thing is not equal
             return false;
         }
+        
+        //TODO WRITE COMPARE METHOD FOR INV RECORDS
+        //this.invRecord == other.invRecord
         
         /*String value checks.  str1 == null ? str2 == null : str1.equals(str2)
          * if str1 is null, expression is false
