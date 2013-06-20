@@ -6,11 +6,11 @@
     <class>tilpersist.Patients</class>
     <class>tilpersist.Request</class>
     <class>tilpersist.Ingress</class>
+    <class>tilpersist.Extpbl</class>
     <properties>
       <property name="hibernate.connection.provider_class" value="org.jasypt.hibernate4.connectionprovider.EncryptedPasswordC3P0ConnectionProvider"/>
       <property name="hibernate.connection.encryptor_registered_name" value="hibernateEncryptor"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
       <property name="hibernate.c3p0.acquire_increment" value="2"/>
       <property name="hibernate.c3p0.idle_test_period" value="300"/>
       <property name="hibernate.c3p0.timeout" value="100"/>
@@ -21,6 +21,10 @@
       <property name="hibernate.c3p0.acquireRetryDelay" value="300"/>
       <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.default_batch_fetch_size" value="200"/>
+      <property name="javax.persistence.jdbc.url" value=""/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.driver" value=""/>
+      <property name="javax.persistence.jdbc.user" value=""/>
     </properties>
   </persistence-unit>
 </persistence>
