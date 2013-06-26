@@ -41,7 +41,9 @@ import javax.persistence.TemporalType;
 @NamedQuery(name = "Ingress.findByLocation", query = "SELECT i FROM Ingress i WHERE i.location = :location"), 
 @NamedQuery(name = "Ingress.findByOriginalvial", query = "SELECT i FROM Ingress i WHERE i.originalvial = :originalvial"), 
 @NamedQuery(name = "Ingress.findByDateVerified", query = "SELECT i FROM Ingress i WHERE i.dateVerified = :dateVerified"),
-@NamedQuery(name = "Ingress.notVerified", query = "SELECT i FROM Ingress as i WHERE i.dateVerified IS NULL")
+@NamedQuery(name = "Ingress.notVerified", query = "SELECT i FROM Ingress as i WHERE i.dateVerified IS NULL"),
+@NamedQuery(name = "Ingress.findForExtPbl", 
+        query = "SELECT i FROM Ingress as i WHERE i.dateVerified IS NULL AND i.cellid = 'PBL' AND i.datefrzn = :datefrzn AND i.mrn = :mrn")
 })
 
 public class Ingress implements Serializable {
