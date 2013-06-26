@@ -38,7 +38,10 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Norminv.findByAmount", query = "SELECT n FROM Norminv n WHERE n.amount = :amount"),
     @NamedQuery(name = "Norminv.findByUnits", query = "SELECT n FROM Norminv n WHERE n.units = :units"),
     @NamedQuery(name = "Norminv.findByLocation", query = "SELECT n FROM Norminv n WHERE n.location = :location"),
-    @NamedQuery(name = "Norminv.findByOriginalvial", query = "SELECT n FROM Norminv n WHERE n.originalvial = :originalvial")
+    @NamedQuery(name = "Norminv.findByOriginalvial", query = "SELECT n FROM Norminv n WHERE n.originalvial = :originalvial"),
+    @NamedQuery(name = "Norminv.findForExtPbl", 
+        query = "SELECT n FROM Norminv n WHERE n.cellid = 'PBL' AND n.location = 'FNL.CSL' "
+        + "AND n.mrn = :mrn AND n.datefrzn = :datefrzn AND n.comments LIKE CONCAT('%',:incomment,'%') ")
 })
 public class Norminv implements Serializable {
     private static final long serialVersionUID = 1L;
